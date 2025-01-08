@@ -1,4 +1,4 @@
-id: data_migration_birthday_field
+id: riskistore-migration
 title: Adding Birthday Field to User
 subtitle: Master data migration with TypeORM
 description: In this quest, you'll learn how to perform a data migration using
