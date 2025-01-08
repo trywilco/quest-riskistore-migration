@@ -1,0 +1,48 @@
+id: data_migration_birthday_field
+title: Adding Birthday Field to User
+subtitle: Master data migration with TypeORM
+description: In this quest, you'll learn how to perform a data migration using
+  TypeORM by adding a new 'birthday' field to the User entity. You'll update the
+  database schema, modify the backend code, and ensure the frontend reflects
+  these changes.
+summary: Congratulations! You've successfully added a new 'birthday' field to
+  the User entity, updated the database schema, and ensured the backend and
+  frontend are in sync. You've mastered the process of data migration using
+  TypeORM.
+slogan: Seamlessly migrate data with TypeORM
+level: intermediate
+type: PROMPT
+duration: 3
+questDependency: null
+repository: https://github.com/trywilco/Riskistore-public
+steps:
+  - run_application
+  - introduce_migration
+  - migration_quiz
+  - update_user_entity
+  - create_migration_file
+  - update_frontend
+skills:
+  - backend
+  - database
+  - frontend
+  - typescript
+  - typeorm
+  - data_migration
+messages:
+  questFinished:
+    person: lucca
+    messages:
+      - text: Fantastic work! You've successfully completed the data migration and added
+          a new 'birthday' field to the User entity. Your skills in managing
+          data migrations are now top-notch!
+resources:
+  - name: github
+  - name: codespaces
+frameworks:
+  backend:
+    - node
+learningMaterials:
+  - type: article
+    title: TypeORM Migrations
+    url: https://typeorm.io/#/migrations

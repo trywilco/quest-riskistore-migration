@@ -1,0 +1,44 @@
+id: update_user_entity
+learningObjectives:
+  - Add a new field to the User entity
+hints:
+  - Look for the User entity in the codebase.
+  - Add a new column for the birthday field.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Let's start by updating the User entity to include a new 'birthday' field.
+              This will involve adding a new column to the User entity class.
+              Once you've made the changes, open a pull request so I can take a
+              look.
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    switch:
+      key: ${eventType}
+      cases:
+        github_pr_opened:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Checking your changes now.
+            - actionId: github_pr_comment
+              params:
+                person: lucca
+                message: Checking your changes now.
+        github_pr_workflow_complete_success:
+          do:
+            - actionId: github_pr_review
+              params:
+                solution: Ensure the User entity has a new column for 'birthday'.
+                messages:
+                  person: lucca
+                  approved: Looks good! Let's merge it.
+        github_pr_merged:
+          do:
+            - actionId: finish_step

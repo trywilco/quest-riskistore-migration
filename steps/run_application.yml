@@ -1,0 +1,29 @@
+id: run_application
+learningObjectives:
+  - Run the application to ensure the initial setup is correct
+hints:
+  - Check the README file for instructions on how to start the application.
+  - Ensure your environment variables are set correctly.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Hey there! Before we dive into the data migration, let's make sure
+              everything is running smoothly. Please follow the instructions in
+              the README file to start the application. This will ensure we're
+              starting from a stable base.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Great! The application is up and running. Let's move on to the next step.
+      - actionId: finish_step
