@@ -25,15 +25,11 @@ trigger:
           prompt: "
             Please evaluate the user's answer in relation to this expected answer:
             
-            A comprehensive rollback strategy should include: 
-            1. Taking a full backup of the database before starting the rollback
-            2. Executing the down() migration to revert the schema changes
-            3. Rolling back the application code to the previous version
-            4. Verifying data integrity after the rollback
-            5. Implementing a gradual rollback using feature flags if possible
-            6. Having a plan for handling any birthday data collected since the migration
-            7. Testing the rollback process in a staging environment first
-            
+            A basic rollback strategy should include these essential steps: 
+            1. Taking a backup of the database before starting the rollback
+            2. Running the down() migration to revert the database changes
+            3. Rolling back the application code to match the previous database state
+
             # Assessment Criteria
             - Determine if the user's response demonstrates a clear understanding of the key concepts and ideas presented in the expected answer.
             - Consider synonyms, paraphrasing, and different phrasing that convey the same meaning.
