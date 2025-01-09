@@ -10,6 +10,7 @@ startFlow:
         person: lucca
         messages:
           - text: Finally, let's update the frontend to include the new 'birthday' field.
+              You'll need to update the API endpoints to expose this field to the frontend.
               Make sure the user profile page reflects this change, and open a pull
               request with your updates.
 
