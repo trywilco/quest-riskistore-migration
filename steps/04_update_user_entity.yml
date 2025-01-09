@@ -10,9 +10,9 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: Let's start by updating the User entity to include a new 'birthday' field.
+          - text: Let's start by updating the User entity to include a new `birthday` field.
               This will involve adding a new column to the User entity class.
-              Once you've made the changes, open a pull request so I can take a
+              Once you've made the changes, :instruction[open a pull request] so I can take a
               look.
 
 trigger:

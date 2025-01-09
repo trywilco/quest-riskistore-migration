@@ -11,12 +11,15 @@ startFlow:
         person: lucca
         messages:
           - text: Now, let's create a migration file to update the database schema. Use the
-              TypeORM CLI to generate a migration file that adds the 'birthday'
-              column to the users table. Once done, open a pull request with
-              your changes.
+              TypeORM CLI to generate a migration file that adds the `birthday`
+              column to the users table. Once done, :instruction[open a pull request with
+              your changes.]
 
 trigger:
   type: github_pr_lifecycle_status
   flowNode:
     do:
       - actionId: github_pr_review
+        params:
+          messages:
+            person: lucca
