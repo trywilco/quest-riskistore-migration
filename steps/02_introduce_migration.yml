@@ -11,10 +11,9 @@ startFlow:
         person: lucca
         messages:
           - text: Alright, let's talk about data migration. In this quest, we'll add a new
-              'birthday' field to the User entity. This involves updating the
+              `birthday` field to the User entity. This involves updating the
               database schema and ensuring our application code reflects these
-              changes. Check out [TypeORM
-              Migrations](https://typeorm.io/#/migrations) for more details.
+              changes. Check out [TypeORM Migrations](https://typeorm.io/#/migrations) for more details.
           - text: Once you're ready, click the button below to proceed.
     - actionId: ready_message
       params:

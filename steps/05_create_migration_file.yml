@@ -1,0 +1,22 @@
+id: create_migration_file
+learningObjectives:
+  - Generate and apply a migration file
+hints:
+  - Use TypeORM CLI to generate a migration file.
+  - Ensure the migration file reflects the new 'birthday' column.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Now, let's create a migration file to update the database schema. Use the
+              TypeORM CLI to generate a migration file that adds the 'birthday'
+              column to the users table. Once done, open a pull request with
+              your changes.
+
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    do:
+      - actionId: github_pr_review

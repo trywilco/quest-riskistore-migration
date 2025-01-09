@@ -1,0 +1,75 @@
+id: rollback_question
+learningObjectives:
+  - Understand safe database migration rollback strategies
+hints:
+  - Think about data preservation during rollback
+  - Consider the order of operations
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Now that we've completed the migration, let's consider safety measures."
+          - text: ":instruction[What steps would you take if you needed to roll back this migration in production?] Include considerations about data preservation and deployment strategy in your answer."
+
+trigger:
+  type: user_message
+  params:
+    person: lucca
+  flowNode:
+    do:
+      - actionId: parse_user_response
+        name: user_answer
+        params:
+          prompt: "
+            Please evaluate the user's answer in relation to this expected answer:
+            
+            A comprehensive rollback strategy should include: 
+            1. Taking a full backup of the database before starting the rollback
+            2. Executing the down() migration to revert the schema changes
+            3. Rolling back the application code to the previous version
+            4. Verifying data integrity after the rollback
+            5. Implementing a gradual rollback using feature flags if possible
+            6. Having a plan for handling any birthday data collected since the migration
+            7. Testing the rollback process in a staging environment first
+            
+            # Assessment Criteria
+            - Determine if the user's response demonstrates a clear understanding of the key concepts and ideas presented in the expected answer.
+            - Consider synonyms, paraphrasing, and different phrasing that convey the same meaning.
+            - Be flexible and focus on the essence of the answer rather than exact wording.
+            
+            # Response Guidelines:
+            - If the user's answer is correct or shows sufficient understanding, return 'correct: true'.
+              - Provide a positive and affirming message, congratulating them and reinforcing their understanding.
+            - If the user's answer is incorrect or incomplete, return 'correct: false'.
+              - Gently explain why the answer is not fully correct or what may be missing.
+              - Encourage them to try again, being empathetic and supportive.
+            
+            # Tone and Style:
+            - Use friendly and encouraging language.
+            - Be empathetic to the user's learning process.
+            - Focus on helping the user learn and understand the material."
+          schema:
+            correct: boolean
+            reply: string
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.user_answer.value.correct}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}

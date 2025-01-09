@@ -1,0 +1,55 @@
+id: migration_quiz
+learningObjectives:
+  - Understand safe database migration strategies
+hints:
+  - Think about production impact and data consistency
+  - Consider how to minimize service disruption
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "During a database schema migration, which approach minimizes production impact?"
+    - actionId: quiz_message
+      name: quiz
+      params:
+        person: lucca
+        options:
+          - Rolling update with backward compatibility and feature flags
+          - Direct schema change during off-hours
+          - Duplicate tables and switch traffic
+trigger:
+  type: chat_form_submitted
+  flowNode:
+    switch:
+      key: ${formSubmission}
+      cases:
+        A:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: "Excellent! Rolling updates with feature flags allow gradual deployment, easy rollback if needed, and ensure the application remains compatible with both old and new schemas during transition."
+            - actionId: finish_step
+        B:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: "While off-hours deployments reduce user impact, they're still risky. What if something goes wrong? A rolling update with backwards compatibility is safer and allows for immediate rollback."
+            - actionId: replay_action
+              params:
+                actionName: quiz
+        C:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: "Table duplication can lead to data synchronization issues and complexity. A better approach is to use feature flags and backward-compatible changes to ensure a smooth transition."
+            - actionId: replay_action
+              params:
+                actionName: quiz

@@ -22,6 +22,7 @@ steps:
   - update_user_entity
   - create_migration_file
   - update_frontend
+  - rollback_question
 skills:
   - backend
   - database

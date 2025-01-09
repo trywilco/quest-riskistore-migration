@@ -1,0 +1,20 @@
+id: update_frontend
+learningObjectives:
+  - Reflect the new field in the frontend
+hints:
+  - Ensure the `UserProfile` page includes a field for the birthday.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Finally, let's update the frontend to include the new 'birthday' field.
+              Make sure the user profile page reflects this change, and open a pull
+              request with your updates.
+
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    do:
+      - actionId: github_pr_review
